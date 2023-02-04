@@ -2,7 +2,7 @@ import { Controller, Post, Body, HttpCode, HttpStatus } from "@nestjs/common";
 
 import { AuthService } from "./auth.service";
 import { CreateUserDTO } from "../user/dto/create-user.dto";
-import { GetCurrentUser, Public } from "src/common/decorators";
+import { GetCurrentUser, Public } from "./../../common/decorators";
 import { AuthDTO } from "./dto/auth.dto";
 
 @Controller("todo/auth")

@@ -8,10 +8,9 @@ import {
   Delete,
   UseGuards,
 } from "@nestjs/common";
-import { AccessTokenGuard } from "src/common/guards/accessToken.guard";
-import { CreateUserDTO } from "./dto/create-user.dto";
-import { UpdateUserDto } from "./dto/update-user.dto";
+import { AccessTokenGuard } from "./../../common/guards";
 
+import { UpdateUserDto } from "./dto/update-user.dto";
 import { UserService } from "./user.service";
 
 @Controller("todo/users")

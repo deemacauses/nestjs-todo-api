@@ -12,7 +12,7 @@ import {
 } from "@nestjs/common";
 
 import { TaskService } from "./task.service";
-import { GetCurrentUser, Public } from "src/common/decorators";
+import { GetCurrentUser, Public } from "./../../common/decorators";
 import { CreateTaskDTO, UpdateTaskDTO } from "./dto";
 
 @Controller("todo/tasks")
@@ -22,7 +22,7 @@ export class TaskController {
   @Public()
   @Post()
   async addTask(
-    @GetCurrentUser() userId: string,
+    @GetCurrentUser("id") userId: string,
     @Body() createTaskDTO: CreateTaskDTO,
   ) {
     const task = await this.taskService.addTask(userId, createTaskDTO);
