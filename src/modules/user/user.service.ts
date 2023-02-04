@@ -27,7 +27,7 @@ export class UserService {
 
   // Find User by Username
   async findUserByUsername(username: string): Promise<UserDocument> {
-    return this.userModel.findOne({ username }).exec();
+    return this.userModel.findOne({ username }).select("+password").exec();
   }
 
   // Update User

@@ -33,7 +33,7 @@ export class AuthService {
 
     const tokens = await this.getTokens(newUser._id, newUser.username);
     await this.updateRefreshToken(newUser._id, tokens.refreshToken);
-    return tokens;
+    return { tokens, newUser };
   }
 
   /** 1) Verify the user by comparing the user’s password before issuing new tokens
@@ -53,6 +53,7 @@ export class AuthService {
 
     const tokens = await this.getTokens(user._id, user.username);
     await this.updateRefreshToken(user._id, tokens.refreshToken);
+    console.log(user._id);
     return tokens;
   }
 

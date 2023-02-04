@@ -10,6 +10,7 @@ import {
 } from "@nestjs/common";
 import { AccessTokenGuard } from "./../../common/guards";
 
+import { Public } from "./../../common/decorators";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { UserService } from "./user.service";
 
@@ -17,25 +18,29 @@ import { UserService } from "./user.service";
 export class UsersController {
   constructor(private readonly usersService: UserService) {}
 
+  @Public()
   @Get()
-  findAll() {
+  findAllUsers() {
     return this.usersService.findAllUsers();
   }
 
+  @Public()
   @Get(":id")
-  findById(@Param("id") id: string) {
+  findUserById(@Param("id") id: string) {
     return this.usersService.findUserById(id);
   }
 
+  @Public()
   @UseGuards(AccessTokenGuard)
   @Patch(":id")
-  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
+  updateUser(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.updateUser(id, updateUserDto);
   }
 
+  @Public()
   @UseGuards(AccessTokenGuard)
   @Delete(":id")
-  remove(@Param("id") id: string) {
+  deleteUser(@Param("id") id: string) {
     return this.usersService.deleteUser(id);
   }
 }
